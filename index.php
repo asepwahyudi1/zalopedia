@@ -1,195 +1,475 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LABTIF Movie</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <!-- Header -->
-    <header class="header">
-      <div class="nav-container">
-        <div class="nav-left">
-          <a href="#"><span class="logo-text">LABTIF Movie</span></a>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zalopedia</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+  <div class="w-full h-full">
+    <div
+      class="w-full h-max flex flex-col gap-4 p-5 lg:px-24 lg:pt-6 lg:pb-4 sticky top-0 bg-white border-b border-gray-200 z-50">
+      <div class="w-full flex items-center gap-4">
+        <div class="w-[20%]">
+          <h1 class="text-2xl select-none">Z A L O P E D I A</h1>
         </div>
-        <button class="nav-toggle" aria-label="Toggle navigation">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </button>
-        <nav class="nav-menu">
-          <a href="#">Home</a>
-          <a href="crud/index.php">Movies</a>
-          <a href="#" class="btn-login">Login</a>
-          <a href="#" class="btn-register">Register</a>
-        </nav>
+
+        <div class="w-[60%]">
+          <div class="w-full flex items-center gap-1 rounded-full border border-gray-400 px-3 py-2">
+            <input type="text" class="w-full ring-0 outline-none"
+              placeholder="Cari produk, tren, dan merek.">
+            <div
+              class="w-[30px] h-[30px] flex items-center justify-center rounded-full bg-gray-800 text-white">
+              <i class="bi bi-search"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-[20%] flex items-center justify-end gap-4">
+          <div class="font-semibold">Masuk / Daftar</div>
+          <div><i class="bi bi-heart"></i></div>
+          <div><i class="bi bi-cart"></i></div>
+        </div>
       </div>
-    </header>
 
-    <!-- Hero -->
-    <div class="hero">
-      <div class="hero-container">
-        <div>
-          <a href="#" class="announcement">
-            LABTIF Connect - Join to Discord Community
-            <span class="announcement-icon">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="m9 18 6-6-6-6" />
-              </svg>
-            </span>
-          </a>
-        </div>
-
-        <h1 class="hero-title">
-          Let's Watch <span class="text-gradient">Together</span>
-        </h1>
-
-        <p class="hero-subtitle">
-          Selamat datang di Labtif Movie – katalog film karya mahasiswa.
-          Jelajahi berbagai genre, temukan cerita unik, dan saksikan kreativitas
-          tanpa batas dalam setiap tayangan.
-        </p>
-
-        <div class="hero-buttons">
-          <a href="#" class="btn-started">
-            Let's Start
-            <svg
-              width="24"
-              height="24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="m9 18 6-6-6-6" />
-            </svg>
-          </a>
-          <button class="btn-install">
-            Labtif Movie
-            <span class="btn-icon">
-              <svg
-                class="w-6 h-6 text-gray-800 dark:text-white"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M19.003 3A2 2 0 0 1 21 5v2h-2V5.414L17.414 7h-2.828l2-2h-2.172l-2 2H9.586l2-2H9.414l-2 2H3V5a2 2 0 0 1 2-2h14.003ZM3 9v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9H3Zm2-2.414L6.586 5H5v1.586Zm4.553 4.52a1 1 0 0 1 1.047.094l4 3a1 1 0 0 1 0 1.6l-4 3A1 1 0 0 1 9 18v-6a1 1 0 0 1 .553-.894Z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </span>
-          </button>
-        </div>
+      <div class="w-full flex items-center gap-8 uppercase">
+        <div class="font-semibold">Produk</div>
+        <div class="font-semibold">Tren</div>
+        <div class="font-semibold">Merek</div>
       </div>
     </div>
 
-    <!-- Card Content Movie -->
-     
-    <div class="card-grid">
-      <?php 
-      require_once 'movie.php';
-      $movie = new Movie();
-      $datas = $movie->getAllMovies();
-        foreach ($datas as $data) {
-          ?>
-          <a class="card" href="crud/moviedetail.php?id=<?= "$data[id]"?>">
-            <div class="card-image-container">
-            <img class="card-image" src="images/<?= "$data[cover] "?>" />
+    <div class="w-full h-full bg-gray-100 p-5 lg:px-24 lg:pt-6 lg:pb-12 flex flex-col gap-8">
+      <div class="w-full h-max flex flex-col rounded-md bg-white">
+        <div class="w-full p-4">
+          <span class="uppercase">Kategori</span>
+        </div>
+        <div
+          class="w-full grid grid-cols-2 lg:grid-cols-10 gap-px bg-gray-200 border border-gray-200 text-center">
+          <div
+            class="flex flex-col gap-3 items-center justify-center bg-white p-4 transition-transform duration-200 hover:scale-105 hover:outline hover:outline-1 hover:outline-gray-200 cursor-pointer">
+            <div
+              class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-gray-100 text-white">
             </div>
+            <div>Elektronik</div>
+          </div>
+          <div
+            class="flex flex-col gap-3 items-center justify-center bg-white p-4 transition-transform duration-200 hover:scale-105 hover:outline hover:outline-1 hover:outline-gray-200 cursor-pointer">
+            <div
+              class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-gray-100 text-white">
+            </div>
+            <div>Komputer & Aksesoris</div>
+          </div>
+          <div
+            class="flex flex-col gap-3 items-center justify-center bg-white p-4 transition-transform duration-200 hover:scale-105 hover:outline hover:outline-1 hover:outline-gray-200 cursor-pointer">
+            <div
+              class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-gray-100 text-white">
+            </div>
+            <div>Handphone & Aksesoris</div>
+          </div>
+          <div
+            class="flex flex-col gap-3 items-center justify-center bg-white p-4 transition-transform duration-200 hover:scale-105 hover:outline hover:outline-1 hover:outline-gray-200 cursor-pointer">
+            <div
+              class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-gray-100 text-white">
+            </div>
+            <div>Pakaian Pria</div>
+          </div>
+          <div
+            class="flex flex-col gap-3 items-center justify-center bg-white p-4 transition-transform duration-200 hover:scale-105 hover:outline hover:outline-1 hover:outline-gray-200 cursor-pointer">
+            <div
+              class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-gray-100 text-white">
+            </div>
+            <div>Sepatu Pria</div>
+          </div>
+          <div
+            class="flex flex-col gap-3 items-center justify-center bg-white p-4 transition-transform duration-200 hover:scale-105 hover:outline hover:outline-1 hover:outline-gray-200 cursor-pointer">
+            <div
+              class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-gray-100 text-white">
+            </div>
+            <div>Tas Pria</div>
+          </div>
+          <div
+            class="flex flex-col gap-3 items-center justify-center bg-white p-4 transition-transform duration-200 hover:scale-105 hover:outline hover:outline-1 hover:outline-gray-200 cursor-pointer">
+            <div
+              class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-gray-100 text-white">
+            </div>
+            <div>Aksesoris Fashion</div>
+          </div>
+          <div
+            class="flex flex-col gap-3 items-center justify-center bg-white p-4 transition-transform duration-200 hover:scale-105 hover:outline hover:outline-1 hover:outline-gray-200 cursor-pointer">
+            <div
+              class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-gray-100 text-white">
+            </div>
+            <div>Jam Tangan</div>
+          </div>
+          <div
+            class="flex flex-col gap-3 items-center justify-center bg-white p-4 transition-transform duration-200 hover:scale-105 hover:outline hover:outline-1 hover:outline-gray-200 cursor-pointer">
+            <div
+              class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-gray-100 text-white">
+            </div>
+            <div>Kesehatan</div>
+          </div>
+          <div
+            class="flex flex-col gap-3 items-center justify-center bg-white p-4 transition-transform duration-200 hover:scale-105 hover:outline hover:outline-1 hover:outline-gray-200 cursor-pointer">
+            <div
+              class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-gray-100 text-white">
+            </div>
+            <div>Hobi & Koleksi</div>
+          </div>
+          <div
+            class="flex flex-col gap-3 items-center justify-center bg-white p-4 transition-transform duration-200 hover:scale-105 hover:outline hover:outline-1 hover:outline-gray-200 cursor-pointer">
+            <div
+              class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-gray-100 text-white">
+            </div>
+            <div>Makanan & Minuman</div>
+          </div>
+          <div
+            class="flex flex-col gap-3 items-center justify-center bg-white p-4 transition-transform duration-200 hover:scale-105 hover:outline hover:outline-1 hover:outline-gray-200 cursor-pointer">
+            <div
+              class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-gray-100 text-white">
+            </div>
+            <div>Perawatan & Kecantikan</div>
+          </div>
+          <div
+            class="flex flex-col gap-3 items-center justify-center bg-white p-4 transition-transform duration-200 hover:scale-105 hover:outline hover:outline-1 hover:outline-gray-200 cursor-pointer">
+            <div
+              class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-gray-100 text-white">
+            </div>
+            <div>Pakaian Wanita</div>
+          </div>
+          <div
+            class="flex flex-col gap-3 items-center justify-center bg-white p-4 transition-transform duration-200 hover:scale-105 hover:outline hover:outline-1 hover:outline-gray-200 cursor-pointer">
+            <div
+              class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-gray-100 text-white">
+            </div>
+            <div>Perlengkapan Rumah</div>
+          </div>
+          <div
+            class="flex flex-col gap-3 items-center justify-center bg-white p-4 transition-transform duration-200 hover:scale-105 hover:outline hover:outline-1 hover:outline-gray-200 cursor-pointer">
+            <div
+              class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-gray-100 text-white">
+            </div>
+            <div>Fashion Muslim</div>
+          </div>
+          <div
+            class="flex flex-col gap-3 items-center justify-center bg-white p-4 transition-transform duration-200 hover:scale-105 hover:outline hover:outline-1 hover:outline-gray-200 cursor-pointer">
+            <div
+              class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-gray-100 text-white">
+            </div>
+            <div>Fashion Bayi & Anak</div>
+          </div>
+          <div
+            class="flex flex-col gap-3 items-center justify-center bg-white p-4 transition-transform duration-200 hover:scale-105 hover:outline hover:outline-1 hover:outline-gray-200 cursor-pointer">
+            <div
+              class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-gray-100 text-white">
+            </div>
+            <div>Sepatu Wanita</div>
+          </div>
+          <div
+            class="flex flex-col gap-3 items-center justify-center bg-white p-4 transition-transform duration-200 hover:scale-105 hover:outline hover:outline-1 hover:outline-gray-200 cursor-pointer">
+            <div
+              class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-gray-100 text-white">
+            </div>
+            <div>Tas Wanita</div>
+          </div>
+          <div
+            class="flex flex-col gap-3 items-center justify-center bg-white p-4 transition-transform duration-200 hover:scale-105 hover:outline hover:outline-1 hover:outline-gray-200 cursor-pointer">
+            <div
+              class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-gray-100 text-white">
+            </div>
+            <div>Otomotif</div>
+          </div>
+          <div
+            class="flex flex-col gap-3 items-center justify-center bg-white p-4 transition-transform duration-200 hover:scale-105 hover:outline hover:outline-1 hover:outline-gray-200 cursor-pointer">
+            <div
+              class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-gray-100 text-white">
+            </div>
+            <div>Ibu & Bayi</div>
+          </div>
+        </div>
 
-            <div class="card-content">
-              <h3 class="card-title"><?= "$data[title]"?></h3>
-              <p class="card-description">
-                <?= "$data[description]"?>
-              </p>
+      </div>
 
-              <div class="card-tags">
-                <span class="tag"><?= "$data[genre]"?></span>
+      <div class="w-full h-max flex flex-col gap-4">
+        <div class="w-full h-max flex flex-col rounded-md bg-white p-4 border-b border-orange-600 text-center">
+          <h1 class="uppercase text-orange-600">Rekomendasi</h1>
+        </div>
+
+        <div class="w-full h-max grid grid-cols-1 lg:grid-cols-6 gap-4">
+          <div
+            class="w-full h-[300px] flex flex-col gap-2 bg-white shadow transition-transform duration-200 hover:shadow-none hover:scale-105 hover:outline hover:outline-1 hover:outline-orange-600 cursor-pointer">
+            <div class="w-full h-[150px] bg-gray-100 shrink-0"></div>
+            <div class="w-full flex flex-col gap-2 px-4 py-1">
+              <span class="line-clamp-2 break-all">Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Numquam, optio corrupti! Quaerat ad dolorem deserunt quo qui. Molestiae, fuga!
+                Nulla nisi magni explicabo quae quam.</span>
+              <div class="w-full h-[100px] flex flex-col gap-2">
+                <div
+                  class="w-full px-2 py-0.5 border border-orange-400 rounded-xs text-xs text-orange-600">
+                  Termurah di
+                  Zalopedia
+                </div>
+                <div class="w-full h-[20px]">
+                  <div class="font-semibold text-orange-600"><span class="text-sm">Rp</span>198.00
+                  </div>
+                </div>
               </div>
             </div>
-          </a>
-          <?php
-        }
-      ?>
-    </div>
-    <!-- Footer -->
-    <footer class="custom-footer">
-      <div class="footer-container">
-        <div class="brand-container">
-          <a class="brand-link" href="#" aria-label="Brand">LABTIF Movie</a>
+          </div>
+
+          <div
+            class="w-full h-[300px] flex flex-col gap-2 bg-white shadow transition-transform duration-200 hover:shadow-none hover:scale-105 hover:outline hover:outline-1 hover:outline-orange-600 cursor-pointer">
+            <div class="w-full h-[150px] bg-gray-100 shrink-0"></div>
+            <div class="w-full flex flex-col gap-2 px-4 py-1">
+              <span class="line-clamp-2 break-all">Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Numquam, optio corrupti! Quaerat ad dolorem deserunt quo qui. Molestiae, fuga!
+                Nulla nisi magni explicabo quae quam.</span>
+              <div class="w-full h-[100px] flex flex-col gap-2">
+                <div
+                  class="w-full px-2 py-0.5 border border-orange-400 rounded-xs text-xs text-orange-600">
+                  Termurah di
+                  Zalopedia
+                </div>
+                <div class="w-full h-[20px]">
+                  <div class="font-semibold text-orange-600"><span class="text-sm">Rp</span>198.00
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="w-full h-[300px] flex flex-col gap-2 bg-white shadow transition-transform duration-200 hover:shadow-none hover:scale-105 hover:outline hover:outline-1 hover:outline-orange-600 cursor-pointer">
+            <div class="w-full h-[150px] bg-gray-100 shrink-0"></div>
+            <div class="w-full flex flex-col gap-2 px-4 py-1">
+              <span class="line-clamp-2 break-all">Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Numquam, optio corrupti! Quaerat ad dolorem deserunt quo qui. Molestiae, fuga!
+                Nulla nisi magni explicabo quae quam.</span>
+              <div class="w-full h-[100px] flex flex-col gap-2">
+                <div
+                  class="w-full px-2 py-0.5 border border-orange-400 rounded-xs text-xs text-orange-600">
+                  Termurah di
+                  Zalopedia
+                </div>
+                <div class="w-full h-[20px]">
+                  <div class="font-semibold text-orange-600"><span class="text-sm">Rp</span>198.00
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="w-full h-[300px] flex flex-col gap-2 bg-white shadow transition-transform duration-200 hover:shadow-none hover:scale-105 hover:outline hover:outline-1 hover:outline-orange-600 cursor-pointer">
+            <div class="w-full h-[150px] bg-gray-100 shrink-0"></div>
+            <div class="w-full flex flex-col gap-2 px-4 py-1">
+              <span class="line-clamp-2 break-all">Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Numquam, optio corrupti! Quaerat ad dolorem deserunt quo qui. Molestiae, fuga!
+                Nulla nisi magni explicabo quae quam.</span>
+              <div class="w-full h-[100px] flex flex-col gap-2">
+                <div
+                  class="w-full px-2 py-0.5 border border-orange-400 rounded-xs text-xs text-orange-600">
+                  Termurah di
+                  Zalopedia
+                </div>
+                <div class="w-full h-[20px]">
+                  <div class="font-semibold text-orange-600"><span class="text-sm">Rp</span>198.00
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="w-full h-[300px] flex flex-col gap-2 bg-white shadow transition-transform duration-200 hover:shadow-none hover:scale-105 hover:outline hover:outline-1 hover:outline-orange-600 cursor-pointer">
+            <div class="w-full h-[150px] bg-gray-100 shrink-0"></div>
+            <div class="w-full flex flex-col gap-2 px-4 py-1">
+              <span class="line-clamp-2 break-all">Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Numquam, optio corrupti! Quaerat ad dolorem deserunt quo qui. Molestiae, fuga!
+                Nulla nisi magni explicabo quae quam.</span>
+              <div class="w-full h-[100px] flex flex-col gap-2">
+                <div
+                  class="w-full px-2 py-0.5 border border-orange-400 rounded-xs text-xs text-orange-600">
+                  Termurah di
+                  Zalopedia
+                </div>
+                <div class="w-full h-[20px]">
+                  <div class="font-semibold text-orange-600"><span class="text-sm">Rp</span>198.00
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="w-full h-[300px] flex flex-col gap-2 bg-white shadow transition-transform duration-200 hover:shadow-none hover:scale-105 hover:outline hover:outline-1 hover:outline-orange-600 cursor-pointer">
+            <div class="w-full h-[150px] bg-gray-100 shrink-0"></div>
+            <div class="w-full flex flex-col gap-2 px-4 py-1">
+              <span class="line-clamp-2 break-all">Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Numquam, optio corrupti! Quaerat ad dolorem deserunt quo qui. Molestiae, fuga!
+                Nulla nisi magni explicabo quae quam.</span>
+              <div class="w-full h-[100px] flex flex-col gap-2">
+                <div
+                  class="w-full px-2 py-0.5 border border-orange-400 rounded-xs text-xs text-orange-600">
+                  Termurah di
+                  Zalopedia
+                </div>
+                <div class="w-full h-[20px]">
+                  <div class="font-semibold text-orange-600"><span class="text-sm">Rp</span>198.00
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="w-full h-[300px] flex flex-col gap-2 bg-white shadow transition-transform duration-200 hover:shadow-none hover:scale-105 hover:outline hover:outline-1 hover:outline-orange-600 cursor-pointer">
+            <div class="w-full h-[150px] bg-gray-100 shrink-0"></div>
+            <div class="w-full flex flex-col gap-2 px-4 py-1">
+              <span class="line-clamp-2 break-all">Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Numquam, optio corrupti! Quaerat ad dolorem deserunt quo qui. Molestiae, fuga!
+                Nulla nisi magni explicabo quae quam.</span>
+              <div class="w-full h-[100px] flex flex-col gap-2">
+                <div
+                  class="w-full px-2 py-0.5 border border-orange-400 rounded-xs text-xs text-orange-600">
+                  Termurah di
+                  Zalopedia
+                </div>
+                <div class="w-full h-[20px]">
+                  <div class="font-semibold text-orange-600"><span class="text-sm">Rp</span>198.00
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="w-full h-[300px] flex flex-col gap-2 bg-white shadow transition-transform duration-200 hover:shadow-none hover:scale-105 hover:outline hover:outline-1 hover:outline-orange-600 cursor-pointer">
+            <div class="w-full h-[150px] bg-gray-100 shrink-0"></div>
+            <div class="w-full flex flex-col gap-2 px-4 py-1">
+              <span class="line-clamp-2 break-all">Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Numquam, optio corrupti! Quaerat ad dolorem deserunt quo qui. Molestiae, fuga!
+                Nulla nisi magni explicabo quae quam.</span>
+              <div class="w-full h-[100px] flex flex-col gap-2">
+                <div
+                  class="w-full px-2 py-0.5 border border-orange-400 rounded-xs text-xs text-orange-600">
+                  Termurah di
+                  Zalopedia
+                </div>
+                <div class="w-full h-[20px]">
+                  <div class="font-semibold text-orange-600"><span class="text-sm">Rp</span>198.00
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="w-full h-[300px] flex flex-col gap-2 bg-white shadow transition-transform duration-200 hover:shadow-none hover:scale-105 hover:outline hover:outline-1 hover:outline-orange-600 cursor-pointer">
+            <div class="w-full h-[150px] bg-gray-100 shrink-0"></div>
+            <div class="w-full flex flex-col gap-2 px-4 py-1">
+              <span class="line-clamp-2 break-all">Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Numquam, optio corrupti! Quaerat ad dolorem deserunt quo qui. Molestiae, fuga!
+                Nulla nisi magni explicabo quae quam.</span>
+              <div class="w-full h-[100px] flex flex-col gap-2">
+                <div
+                  class="w-full px-2 py-0.5 border border-orange-400 rounded-xs text-xs text-orange-600">
+                  Termurah di
+                  Zalopedia
+                </div>
+                <div class="w-full h-[20px]">
+                  <div class="font-semibold text-orange-600"><span class="text-sm">Rp</span>198.00
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <ul class="nav-links">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="crud/index.php">Movies</a>
-          </li>
-        </ul>
+        <button
+          class="w-max px-3 py-2 my-4 mx-auto rounded-md shadow bg-white hover:bg-gray-100 active:transition-transform active:duration-200 active:scale-95 cursor-pointer">
+          Login untuk melihat lebih banyak
+        </button>
+      </div>
+    </div>
 
-        <div class="social-icons">
-          <a class="social-icon" href="https://www.instagram.com/labtif.unsur/">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"
-              />
-            </svg>
-          </a>
-          <a class="social-icon" href="#">
-            <svg 
-            width="24" 
-            height="24" 
-            fill="currentColor" 
-            viewBox="0 0 24 24">
-            <path  fill-rule="evenodd" d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z" clip-rule="evenodd"/>
-            </svg>
-          </a>
-          <a class="social-icon" href="https://github.com/unsur-labtif">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-              />
-            </svg>
-          </a>
+    <div class="w-full h-max flex flex-col">
+      <div class="w-full h-max flex items-start gap-4 p-5 lg:px-24 lg:py-12 border-y border-gray-200">
+        <div class="w-full flex items-center justify-between gap-4">
+          <div class="w-full flex flex-col gap-2">
+            <span class="text-xl font-bold">Zalopedia</span>
+            <span class="text-sm text-gray-500">Tentang Zalopedia</span>
+            <span class="text-sm text-gray-500">Tentang Zalopedia</span>
+            <span class="text-sm text-gray-500">Tentang Zalopedia</span>
+            <span class="text-sm text-gray-500">Tentang Zalopedia</span>
+            <span class="text-sm text-gray-500">Tentang Zalopedia</span>
+            <span class="text-sm text-gray-500">Tentang Zalopedia</span>
+            <span class="text-sm text-gray-500">Tentang Zalopedia</span>
+          </div>
+
+          <div class="w-full flex flex-col gap-2">
+            <span class="text-xl font-bold">Beli</span>
+            <span class="text-sm text-gray-500">Tentang Zalopedia</span>
+            <span class="text-sm text-gray-500">Tentang Zalopedia</span>
+            <span class="text-sm text-gray-500">Tentang Zalopedia</span>
+            <span class="text-sm text-gray-500">Tentang Zalopedia</span>
+            <span class="text-sm text-gray-500">Tentang Zalopedia</span>
+            <span class="text-sm text-gray-500">Tentang Zalopedia</span>
+            <span class="text-sm text-gray-500">Tentang Zalopedia</span>
+          </div>
+
+          <div class="w-full flex flex-col gap-2">
+            <span class="text-xl font-bold">Keamanan & Privasi</span>
+            <span class="text-sm text-gray-500">Tentang Zalopedia</span>
+            <span class="text-sm text-gray-500">Tentang Zalopedia</span>
+            <span class="text-sm text-gray-500">Tentang Zalopedia</span>
+            <span class="text-sm text-gray-500">Tentang Zalopedia</span>
+            <span class="text-sm text-gray-500">Tentang Zalopedia</span>
+            <span class="text-sm text-gray-500">Tentang Zalopedia</span>
+            <span class="text-sm text-gray-500">Tentang Zalopedia</span>
+          </div>
+        </div>
+        <div class="w-[40%] shrink-0 flex flex-col gap-4">
+          <div class="w-full flex text-sm flex-col gap-2">
+            <span class="!text-xl font-semibold">Nikmati keuntungan special di Zalopedia:</span>
+            <div class="w-full flex items-center gap-2">
+              <i class="bi bi-coin text-xl text-green-600"></i>
+              <span>Diskon 50% untuk pembelian pertama</span>
+            </div>
+            <div class="w-full flex items-center gap-2">
+              <i class="bi bi-coin text-xl text-green-600"></i>
+              <span>Diskon 50% untuk pembelian pertama</span>
+            </div>
+            <div class="w-full flex items-center gap-2">
+              <i class="bi bi-coin text-xl text-green-600"></i>
+              <span>Diskon 50% untuk pembelian pertama</span>
+            </div>
+          </div>
+
+          <div class="w-full flex flex-col gap-2">
+            <span class="text-sm text-gray-500">Buka aplikasi dengan scan QR atau klik tombol:</span>
+
+            <div class="w-full flex items-center gap-2">
+              <i class="bi bi-qr-code text-[144px] leading-none"></i>
+
+              <div class="w-full flex flex-col gap-2">
+                <img src="https://images.seeklogo.com/logo-png/37/2/app-store-google-play-logo-png_seeklogo-370449.png"
+                  width="150" alt="">
+              </div>
+            </div>
+
+            <a href="#" class="text-sm text-green-600">Pelajari selengkapnya &raquo;</a>
+          </div>
         </div>
       </div>
-    </footer>
+      <div class="w-full h-max p-5 lg:px-24 lg:py-6">
+        &copy 2025 Zalopedia All rights reserved
+      </div>
+    </div>
+</body>
 
-    <script>
-      const toggle = document.querySelector(".nav-toggle");
-      const menu = document.querySelector(".nav-menu");
-      toggle.addEventListener("click", () => {
-        menu.classList.toggle("active");
-      });
-    </script>
-  </body>
 </html>
