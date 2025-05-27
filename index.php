@@ -30,7 +30,8 @@
         </div>
 
         <div class="w-[20%] flex items-center justify-end gap-4">
-          <div class="font-semibold">Masuk / Daftar</div>
+          <div class="font-semibold"><a href="app/views/auth/login.php">Masuk</a> / <a
+              href="app/views/auth/register.php">Daftar</a></div>
           <div><i class="bi bi-heart"></i></div>
           <div><i class="bi bi-cart"></i></div>
         </div>
