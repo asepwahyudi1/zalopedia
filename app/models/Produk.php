@@ -22,6 +22,12 @@ class Produk
         return !empty($result) ? $result[0] : null;
     }
 
+    public function search($keyword)
+    {
+        $where = ['title' => $keyword];
+        return $this->db->select('product', $where);
+    }
+
     public function add($id_category, $id_user, $title, $price, $totalPrice, $image, $discount = 0)
     {
         if (empty($id_category) || empty($id_user) || empty($title) || empty($price) || empty($image)) {

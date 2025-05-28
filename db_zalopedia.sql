@@ -14,6 +14,29 @@ CREATE TABLE category (
     image VARCHAR(255)
 );
 
+INSERT INTO category (name, image) VALUES
+('Elektronik', NULL),
+('Komputer & Aksesoris', NULL),
+('Handphone & Aksesoris', NULL),
+('Pakaian Pria', NULL),
+('Sepatu Pria', NULL),
+('Tas Pria', NULL),
+('Aksesoris Fashion', NULL),
+('Jam Tangan', NULL),
+('Kesehatan', NULL),
+('Hobi & Koleksi', NULL),
+('Makanan & Minuman', NULL),
+('Perawatan & Kecantikan', NULL),
+('Pakaian Wanita', NULL),
+('Perlengkapan Rumah', NULL),
+('Fashion Muslim', NULL),
+('Fashion Bayi & Anak', NULL),
+('Sepatu Wanita', NULL),
+('Tas Wanita', NULL),
+('Otomotif', NULL),
+('Ibu & Bayi', NULL);
+
+
 CREATE TABLE product (
     id_product INT PRIMARY KEY AUTO_INCREMENT,
     id_category INT NOT NULL,
